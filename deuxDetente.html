@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deux détentes</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Deux détentes</h1>
+	<form id="form1">
+		<label for="n">Entrez un nombre entre 1 et 13 :</label>
+		<input type="number" id="n" name="n" min="1" max="13" value="13"><br><br>
+		<button type="button" id="btn1">Valider</button>
+	</form>
+	<div id="form2-container" style="display: none;">
+		<form id="form2">
+			<label>Choisissez des valeurs à cocher :</label><br><br>
+			<div id="checkboxes-container"></div>
+			<button type="button" id="btn2">Valider</button>
+		</form>
+	</div>
+	<div id="result" style="display: none;">
+		<h2>Nombres congrus  :</h2>
+		<div id="congruent-numbers"></div>
+	</div>
+	<script>
+		var form1 = document.getElementById('form1');
+		var form2Container = document.getElementById('form2-container');
+		var checkboxesContainer = document.getElementById('checkboxes-container');
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+		var resultDiv = document.getElementById('result');
+		var congruentNumbersDiv = document.getElementById('congruent-numbers');
+
+		btn1.addEventListener('click', function() {
+			var n = parseInt(form1.n.value);
+			checkboxesContainer.innerHTML = '';
+			for (var i = 0; i < n; i++) {
+				var label = document.createElement('label');
+				var checkbox = document.createElement('input');
+				checkbox.type = 'checkbox';
+				checkbox.name = 'checkbox-' + i;
+				checkbox.value = i;
+				label.appendChild(checkbox);
+				label.appendChild(document.createTextNode(i));
+				checkboxesContainer.appendChild(label);
+			}
+			form2Container.style.display = 'block';
+		});
+
+		btn2.addEventListener('click', function() {
+			var n = parseInt(form1.n.value);
+			var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+			var values = [];
+			for (var i = 0; i < checkboxes.length; i++) {
+				values.push(parseInt(checkboxes[i].value));
+			}
+			var congruentNumbers = [];
+			for (var i = 0; i < 1000; i++) {
+				for (var j = 0; j < values.length; j++) {
+					if (i % n == values[j]) {
+						congruentNumbers.push(i);
+						break;
+					}
+				}
+				if (congruentNumbers.length == 300) {
+					break;
+				}
+			}
+			congruentNumbersDiv.textContent = congruentNumbers.join(', ');
+			resultDiv.style.display = 'block';
+		});
+	</script>
+</body>
+</html>

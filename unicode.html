@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+</head>
+<body>
+    <h1>Exercice 2 - @Table unicode</h1>
+    <p>Écrire une page unicode.html qui affiche une table unicode : Pour les valeurs unicode de 1 à 1000 la table
+contient le nombre et le caractère qui lui correspond dans la table.
+</p>
+
+	<h1>Table Unicode</h1>
+	<table id="unicode-table">
+		<tr>
+			<th>Valeur Unicode</th>
+			<th>Caractère correspondant</th>
+		</tr>
+	</table>
+
+	<script>
+		var table = document.getElementById("unicode-table");
+
+		for (var i = 1; i <= 1000; i++) {
+			var row = table.insertRow();
+
+			var cell1 = row.insertCell(0);
+			cell1.innerHTML = i;
+
+			var cell2 = row.insertCell(1);
+			cell2.innerHTML = String.fromCharCode(i);
+		}
+	</script>
+</body>
+</html>

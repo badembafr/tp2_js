@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice Articles</title>
+</head>
+<body>
+    <input type="text" id="article-input">
+    <button onclick="ajouterArticle()">+1</button>
+    <p id="articles-paragraphe">Texte initial.</p>
+
+    <script>
+        function ajouterArticle()
+        {
+            var nouveauTexte = document.getElementById("article-input").value;
+            var articlesParagraphe = document.getElementById("articles-paragraphe");
+            articlesParagraphe.innerHTML = nouveauTexte + "<br>" + articlesParagraphe.innerHTML;
+            document.getElementById("article-input").value = "";
+        }
+    </script>
+</body>
+</html>

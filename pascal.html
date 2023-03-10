@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle de Pascal</title>
+</head>
+<body>
+    <form>
+        <label for="dimension">Dimension du triangle :</label>
+        <input type="number" id="dimension" name="dimension" value="4">
+        <button type="button" onclick="afficherTriangle()">Afficher</button>
+    </form>
+    <p id="triangle"></p>
+
+    <script>
+        function afficherTriangle() {
+            var dimension = parseInt(document.getElementById("dimension").value);
+
+            var triangle = "";
+            for (var i = 0; i < dimension; i++) {
+                var ligne = "";
+                for (var j = 0; j <= i; j++) {
+                    ligne += coefficientBinomial(i, j) + " ";
+                }
+                triangle += ligne.trim() + "<br>";
+            }
+
+            document.getElementById("triangle").innerHTML = triangle;
+        }
+
+        function coefficientBinomial(n, k) {
+            var resultat = 1;
+            for (var i = 1; i <= k; i++) {
+                resultat *= (n - k + i) / i;
+            }
+            return Math.round(resultat);
+        }
+    </script>
+</body>
+</html>

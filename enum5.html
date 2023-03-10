@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>premiers carrés parfaits</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>1000 carrés parfaits</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>L</th>
+				<th>Carré parfait</th>
+			</tr>
+		</thead>
+		<tbody id="table-body">
+		</tbody>
+	</table>
+	<script>
+		var tbody = document.getElementById('table-body');
+		var count = 0;
+		for (var i = 1; i <= 1000; i++) {
+			if (count % 7 == 0) {
+				var tr = document.createElement('tr');
+				tbody.appendChild(tr);
+				var td1 = document.createElement('td');
+				td1.textContent = Math.floor(count / 7) + 1;
+				tr.appendChild(td1);
+			}
+			var td2 = document.createElement('td');
+			td2.textContent = i * i;
+			tr.appendChild(td2);
+			count++;
+		}
+	</script>
+</body>
+</html>
